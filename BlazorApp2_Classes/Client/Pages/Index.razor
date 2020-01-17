@@ -1,0 +1,55 @@
+﻿@page "/"
+
+<h1>Calculado!</h1>
+<h3>5 + 5 = @Calcular.Somar(5, 5)</h3>
+<h3>5 - 5 = @Calcular.Subtrair(5, 5)</h3>
+<h3>5 * 5 = @Calcular.Multiplicar(5, 5)</h3>
+<h3>5 / 5 = @Calcular.Dividir(5, 5)</h3>
+<hr />
+<h3>10 + 5 = @Calculos.Somar(10, 5)</h3>
+<h3>10 - 5 = @Calculos.Subtrair(10, 5)</h3>
+<h3>10 * 5 = @Calculos.Multiplicar(10, 5)</h3>
+<h3>10 / 5 = @Calculos.Dividir(10, 5)</h3>
+
+
+
+<hr />
+<h2>Carro</h2>
+<div>
+    <h3> Nome:@carro.Nome</h3>
+    <h3> Cadastro:@carro.DataCadastro.ToString("dd/MM/yyyy")</h3>
+
+</div>
+@code{
+
+    public Produto carro  // propriedade e nao metodo
+    {
+        get { 
+            return GetProduto();
+        }
+
+    }
+    public class Calcular
+    {
+        public static int Somar(int n1, int n2) => n1 + n2;
+        public static int Subtrair(int n1, int n2) => n1 - n2;
+        public static int Multiplicar(int n1, int n2) => n1 * n2;
+        public static int Dividir(int n1, int n2) => n1 / n2;
+    }
+
+    private Produto GetProduto()
+    {
+        var prod = new Produto();
+        prod.Nome = "fiat uno velho";
+        prod.DataCadastro = DateTime.Now;
+        return prod;
+        //return new Produto
+        //{
+        //    Nome = "fiat uno",
+        //        DataCadastro = new DateTime(2020,01,16)
+        //};
+
+    }
+
+}
+
