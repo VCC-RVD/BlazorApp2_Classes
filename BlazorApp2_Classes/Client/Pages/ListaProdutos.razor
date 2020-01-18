@@ -3,38 +3,42 @@
 <h2>lista de produtos com forearch</h2>
 <hr />
 @foreach (var produto in GetProdutos())
-{
-    <div>
-        <h3>produto:@produto.Nome</h3>
-        <h3>cadastrado em:@produto.DataCadastro.ToString("dd/MM/yyyy")</h3>
-        <hr />
-    </div>
-    
+{<ul>
+        <li>
 
+            <h6>produto:@produto.Nome</h6>
+            <h6>cadastrado em:@produto.DataCadastro.ToString("dd/MM/yyyy")</h6>
+
+
+        </li>
+    </ul>
 
 }
 <hr />
-<hr />
+
 @for (int i = 0; i < Produto.Count; i++)
 {
-    <div>
-        <h3>produto[@(i+1)º ]:@Produto[i].Nome</h3>
-        <h3>cadastrado em:@Produto[1].DataCadastro.ToString("dd/MM/yyyy")</h3>
-        <hr />
-    </div>
-}
+    <ol>
+        <li>
+           
+                <h6>produto[@(i + 1)º ]:@Produto[i].Nome</h6>
+                <h6>cadastrado em:@Produto[1].DataCadastro.ToString("dd/MM/yyyy")</h6>
 
+           
+        </li>
+    </ol>
+}
 @code {
     public List<Produto> Produto { get { return GetProdutos(); } }
 
     private List<Produto> GetProdutos()
     {
         return new List<Produto>()
-    {
+        {
                 new Produto(){Nome = "fusca",DataCadastro = new DateTime(2020,09,05) },
                 new Produto(){Nome = "gol",DataCadastro = new DateTime(2020,09,05) },
                 new Produto(){Nome = "variant",DataCadastro = new DateTime(2020,09,05) }
-            };
+        };
 
     }
 
