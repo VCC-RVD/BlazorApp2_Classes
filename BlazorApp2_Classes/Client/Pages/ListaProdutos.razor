@@ -5,7 +5,10 @@
 @foreach (var produto in GetProdutos())
 {<ul>
         <li>
-
+            @if (produto.Nome.Contains("gol"))
+            {
+            <h5>Carro com desconto</h5>
+            }
             <h6>produto:@produto.Nome</h6>
             <h6>cadastrado em:@produto.DataCadastro.ToString("dd/MM/yyyy")</h6>
 
@@ -20,7 +23,10 @@
 {
     <ol>
         <li>
-           
+           @if (i == Produto.Count - 1)
+           {
+            <h5>este é o ultimo carro da lista</h5>
+           }
                 <h6>produto[@(i + 1)º ]:@Produto[i].Nome</h6>
                 <h6>cadastrado em:@Produto[1].DataCadastro.ToString("dd/MM/yyyy")</h6>
 
@@ -28,7 +34,23 @@
         </li>
     </ol>
 }
+
+@switch (dia)
+{
+    case "Monday":
+        mensagem = "segunda feira";
+        break;
+        case "sunday":
+        mensagem = "domingo";
+        break;
+    default:
+        mensagem = $"hoje é dia:{dia}" ;
+        break;
+}
+<h4>@mensagem</h4>
 @code {
+    string dia = DateTime.Now.DayOfWeek.ToString();
+    string mensagem = "";
     public List<Produto> Produto { get { return GetProdutos(); } }
 
     private List<Produto> GetProdutos()
